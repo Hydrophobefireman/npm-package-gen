@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "alwaysStrict": true,
+    "declaration": true,
+    "incremental": true,
+    "target": "ESNext",
+    "rootDir": ".",
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "@hydrophobefireman/ui-lib",
+    "paths": {
+      "replace-me": ["./src/index"],
+      "replace-me/*": ["./packages/*/src"]
+    }
+  },
+  "exclude": ["node_modules"]
+}

@@ -1,0 +1,40 @@
+{
+  "name": "replace-me",
+  "description": "",
+  "types": "dist/index.d.ts",
+  "version": "0.0.0-june-29-02-32",
+  "license": "MIT",
+  "repository": {
+    "type": "git"
+  },
+  "main": "dist/kit.modern.js",
+  "module": "dist/kit.modern.js",
+  "exports": {
+    ".": "./dist/kit.modern.js",
+    "./package.json": "./package.json",
+    "./": "./"
+  },
+  "scripts": {
+    "prebuild": "node scripts/clean.js",
+    "prepublishOnly": "npm run build &&  node scripts/prepublishOnly.js",
+    "postpublish": "node scripts/postpublish.js",
+    "create-package": "node scripts/create-package.js",
+    "chore:build": "microbundle src/index.ts  --no-sourcemap -o ./dist -f modern  --raw true --compress false --tsconfig tsconfig.json",
+    "chore:move-types": "node scripts/move-types.js",
+    "build": "run-p build:* --max-parallel 3",
+    "build:core": "npm run chore:build -- --cwd . && npm run chore:move-types -- . "
+  },
+  "sideEffects": false,
+  "peerDependencies": {
+    "@hydrophobefireman/flask-jwt-jskit": "^0.1.5",
+    "@hydrophobefireman/ui-lib": "^1.9.9",
+    "statedrive": "^0.0.13"
+  },
+  "devDependencies": {
+    "csstype": "^3.0.8",
+    "microbundle": "^0.13.3",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^4.3.4"
+  },
+  "kitPackages": []
+}
