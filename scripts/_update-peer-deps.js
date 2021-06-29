@@ -1,15 +1,16 @@
 const {
-  kitPackages,
-  version,
-  name,
-  peerDependencies,
-} = require("../package.json");
-const { postpublish, packageDir, prettyJSON } = require("./util");
+  postpublish,
+  packageDir,
+  prettyJSON,
+  fromPackageJson,
+} = require("./util");
 const { readFile, writeFile } = require("./actions");
 const { join } = require("path");
 
 async function updatePackages() {
   await postpublish();
+  const { kitPackages, version, name, peerDependencies } =
+    await fromPackageJson();
   await Promise.all(
     kitPackages.map(async (x) => {
       const folder = join(packageDir, x);

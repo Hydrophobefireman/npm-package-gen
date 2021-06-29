@@ -1,10 +1,9 @@
 const { mkdir, writeFile, readFile } = require("./actions");
 const { join } = require("path");
-const { prettyJSON } = require("./util");
+const { prettyJSON, fromPackageJson } = require("./util");
 const { updatePackages } = require("./_update-peer-deps");
-const { version, kitPackages } = require("../package.json");
 
-const packageJsonTemplate = (name) => ({
+const packageJsonTemplate = (name, version) => ({
   name,
   version,
   private: true,
@@ -31,6 +30,7 @@ const packageDir = join(appRoot, "packages");
 async function createPackage() {
   const packageName = process.argv.slice(2)[0];
   if (!packageName) throw new Error("Invalid package name");
+  const { kitPackages, version } = await fromPackageJson();
   if (kitPackages.includes(packageName))
     throw new Error(`Package: "${packageName}" already exists`);
   const dir = join(packageDir, packageName);
@@ -39,7 +39,7 @@ async function createPackage() {
 
   const file = join(dir, "package.json");
 
-  await writeFile(file, prettyJSON(packageJsonTemplate(packageName)));
+  await writeFile(file, prettyJSON(packageJsonTemplate(packageName, version)));
 
   const src = join(dir, "src");
   await mkdir(src);
@@ -66,7 +66,7 @@ async function createPackage() {
   packageJsonContent.kitPackages.push(packageName);
   packageJsonContent.kitPackages.sort();
   packageJsonContent.scripts = scripts;
-  writeFile(packageJson, prettyJSON(packageJsonContent));
+  await writeFile(packageJson, prettyJSON(packageJsonContent));
   await updatePackages();
 }
 

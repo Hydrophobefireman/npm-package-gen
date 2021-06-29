@@ -1,7 +1,6 @@
 const { rm } = require("./actions");
 const { join } = require("path");
 const { postpublish, root, packageDir } = require("./util");
-const { kitPackages } = require("../package.json");
 
 async function main() {
   console.log(`Root: ${root}`);
@@ -10,7 +9,7 @@ async function main() {
 
   // run just in case
   postpublish();
-
+  const { kitPackages } = await fromPackageJson();
   await Promise.all(
     kitPackages.map(async (package) => {
       const dist = join(packageDir, package, "dist");

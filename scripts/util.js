@@ -1,10 +1,17 @@
-const { rename, rRoot, root } = require("./actions");
-const { kitPackages } = require("../package.json");
+const { rename, rRoot, root, readFile } = require("./actions");
 const { join } = require("path");
 
+const packageJsonLoc = join(root, "package.json");
 const packageDir = join(root, "packages");
 
+/**@returns {Promise<typeof import("../package.json")>} */
+async function fromPackageJson() {
+  const js = await readFile(packageJsonLoc);
+  return JSON.parse(js.toString());
+}
+
 async function postpublish() {
+  const { kitPackages } = await fromPackageJson();
   return await Promise.all(
     kitPackages.map(async (x) => {
       const loc = join(root, x);
@@ -28,4 +35,5 @@ module.exports = {
   rRoot,
   packageDir,
   postpublish,
+  fromPackageJson,
 };

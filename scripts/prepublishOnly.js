@@ -1,6 +1,6 @@
 const { join } = require("path");
 const { rename } = require("./actions");
-const { kitPackages } = require("../package.json");
+const { fromPackageJson } = require("./util");
 const root = join(__dirname, "..");
 const packages = join(root, "packages");
 const { updatePackages } = require("./_update-peer-deps");
@@ -13,6 +13,7 @@ async function movePackage(name) {
 
 async function main() {
   await updatePackages();
+  const { kitPackages } = await fromPackageJson();
   await Promise.all(kitPackages.map((x) => movePackage(x)));
 }
 
