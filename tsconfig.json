@@ -1,19 +1,28 @@
 {
   "compilerOptions": {
     "module": "ESNext",
+    "outDir": "dist",
     "alwaysStrict": true,
     "declaration": true,
-    "incremental": true,
     "target": "ESNext",
     "rootDir": ".",
+    "strictNullChecks": true,
     "moduleResolution": "node",
     "skipLibCheck": true,
     "jsx": "react-jsx",
     "jsxImportSource": "@hydrophobefireman/ui-lib",
+    "noEmitOnError": true,
     "paths": {
-      "replace-me": ["./src/index"],
-      "replace-me/*": ["./packages/*/src"]
+      "@hydrophobefireman/kit": ["./src/index"],
+      "@hydrophobefireman/kit/*": ["./packages/*/src"]
     }
   },
-  "exclude": ["node_modules"]
+
+  "include": ["src/*", "packages"],
+  "exclude": [
+    "node_modules",
+    "dist/*",
+    "examples/",
+    "localstorage-reflection.js"
+  ]
 }

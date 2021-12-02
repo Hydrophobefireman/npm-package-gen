@@ -1,4 +1,4 @@
-const { postpublish } = require("./util");
+const {postpublish} = require("./util");
 
 if (require.main === module) {
   postpublish();
