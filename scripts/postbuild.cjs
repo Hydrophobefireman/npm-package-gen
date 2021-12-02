@@ -1,6 +1,6 @@
 const {join} = require("path");
-const {copyFile, dist, root} = require("./actions");
-const {fromPackageJson} = require("./util");
+const {copyFile, dist, root} = require("./actions.cjs");
+const {fromPackageJson} = require("./util.cjs");
 
 const builtPackages = join(dist, "packages");
 const srcPackages = join(root, "packages");

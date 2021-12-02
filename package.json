@@ -4,6 +4,7 @@
   "types": "dist/src/index.d.ts",
   "version": "0.0.3-11-11-2021-22-18",
   "license": "MIT",
+  "type": "module",
   "homepage": "https://github.com/username/replace-me#readme",
   "repository": {
     "type": "git",

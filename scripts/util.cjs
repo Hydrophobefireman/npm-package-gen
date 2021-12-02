@@ -1,5 +1,5 @@
 const {join} = require("path");
-const {rRoot, readFile, rm, root} = require("./actions");
+const {rRoot, readFile, rm, root} = require("./actions.cjs");
 
 const packageJsonLoc = join(root, "package.json");
 const packageDir = join(root, "packages");

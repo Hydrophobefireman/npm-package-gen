@@ -1,6 +1,6 @@
-const {updatePackages} = require("./_update-peer-deps");
-const {mkdir, root, writeFile} = require("./actions");
-const {fromPackageJson, prettyJSON} = require("./util");
+const {updatePackages} = require("./_update-peer-deps.cjs");
+const {mkdir, root, writeFile} = require("./actions.cjs");
+const {fromPackageJson, prettyJSON} = require("./util.cjs");
 const {join} = require("path");
 
 const packageJsonTemplate = (name, version) => ({

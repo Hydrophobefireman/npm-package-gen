@@ -1,7 +1,7 @@
 const {join} = require("path");
-const {updatePackages} = require("./_update-peer-deps");
-const {dist, rename, root} = require("./actions");
-const {fromPackageJson} = require("./util");
+const {updatePackages} = require("./_update-peer-deps.cjs");
+const {dist, rename, root} = require("./actions.cjs");
+const {fromPackageJson} = require("./util.cjs");
 
 const packages = join(dist, "packages");
 

@@ -1,11 +1,11 @@
 const {join} = require("path");
-const {readFile, writeFile} = require("./actions");
+const {readFile, writeFile} = require("./actions.cjs");
 const {
   fromPackageJson,
   packageDir,
   packageJsonLoc,
   prettyJSON,
-} = require("./util");
+} = require("./util.cjs");
 
 async function updatePackages() {
   const packageJson = await fromPackageJson();
