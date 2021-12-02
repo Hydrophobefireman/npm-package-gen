@@ -19,11 +19,11 @@
   },
   "scripts": {
     "_i": "for i in ./dist/packages/*; do echo \"$i\" && cp \"$i\" ./examples/node_modules/@hydrophobefireman/kit/ -r ;done && cp styles ./examples/node_modules/@hydrophobefireman/kit/ -r &&  cp dist ./examples/node_modules/@hydrophobefireman/kit/ -r && cp package.json ./examples/node_modules/@hydrophobefireman/kit/",
-    "prebuild": "node scripts/clean.js",
-    "prepublishOnly": "npm run build &&  node scripts/prepublishOnly.js",
-    "postpublish": "node scripts/postpublish.js",
-    "postbuild": "node scripts/postbuild.js",
-    "create-package": "node scripts/create-package.js",
+    "prebuild": "node scripts/clean.cjs",
+    "prepublishOnly": "npm run build &&  node scripts/prepublishOnly.cjs",
+    "postpublish": "node scripts/postpublish.cjs",
+    "postbuild": "node scripts/postbuild.cjs",
+    "create-package": "node scripts/create-package.cjs",
     "build": "tsc",
     "prepare": "husky install"
   },
