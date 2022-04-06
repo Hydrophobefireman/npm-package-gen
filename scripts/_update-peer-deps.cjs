@@ -17,6 +17,7 @@ async function updatePackages() {
       const subPackageJson = join(folder, "package.json");
       const js = JSON.parse((await readFile(subPackageJson)).toString());
       js.version = version;
+      js.type = "module";
       js.peerDependencies = Object.assign({}, peerDependencies);
       await writeFile(subPackageJson, prettyJSON(js));
     })

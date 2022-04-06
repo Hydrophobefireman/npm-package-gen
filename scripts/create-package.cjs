@@ -15,7 +15,7 @@ const packageJsonTemplate = (name, version) => ({
 });
 
 function indexTemplate(name) {
-  return `export * from "./${name}";\nexport * from "./types";\n`;
+  return `export * from "./${name}.js";\nexport * from "./types.js";\n`;
 }
 
 const MODULE_TEMPLATE = "export {}\n";
